@@ -1,0 +1,402 @@
+[
+  {
+    "domanda": "1. Cos’è un connettore Tecnaria e a cosa serve?",
+    "risposta": "Risposta: Un connettore Tecnaria è un elemento metallico utilizzato per collegare lo strato superiore in calcestruzzo a una struttura portante (legno, acciaio o laterocemento) al fine di ottenere un solaio misto, cioè una struttura collaborante che migliora la portanza e la rigidezza del solaio stesso."
+  },
+  {
+    "domanda": "2. Quali sono i principali vantaggi di un solaio misto legno-calcestruzzo?",
+    "risposta": "Risposta: ● Aumento della portata e della rigidezza  ● Riduzione delle deformazioni  ● Miglior comportamento al fuoco e alle vibrazioni  ● Possibilità di mantenere la struttura lignea esistente  ● Semplicità di intervento, anche su edifici storici"
+  },
+  {
+    "domanda": "3. Quali tipi di connettori offre Tecnaria?",
+    "risposta": "Risposta: ● Connettori per legno (tipo CTC, VTC, STC, BARRE FILETTATE)  ● Connettori per acciaio (tipo CONNECTOR HBS, HBV, HP)  ● Connettori per laterocemento (tipo CONNECTOR FLAT, CONNECTOR L)  ● Accessori: viti, resine, piastre, armature aggiuntive"
+  },
+  {
+    "domanda": "4. Come si fissa un connettore Tecnaria su una trave in legno?",
+    "risposta": "Risposta: Si utilizza una vite speciale autotrapanante fornita da Tecnaria, che garantisce l’ancoraggio diretto sul legno, oppure (in caso di connettori chimici) una resina epossidica specifica."
+  },
+  {
+    "domanda": "5. Qual è la differenza tra un connettore meccanico e uno chimico?",
+    "risposta": "Risposta: ● Meccanico: fissato tramite vite, chiodo o saldatura  ● Chimico: incollato tramite resina epossidica strutturale La scelta dipende dalla tipologia di supporto e dalla necessità di trasferimento delle forze."
+  },
+  {
+    "domanda": "6. Quali certificazioni possiedono i connettori Tecnaria?",
+    "risposta": "Risposta: ● ETA (European Technical Assessment)  ● Marcatura CE  ● Rapporti di prova secondo normative europee  ● Classificazione al fuoco"
+  },
+  {
+    "domanda": "7. Come si calcola il passo dei connettori su una trave in legno?",
+    "risposta": "Risposta: Il passo (distanza tra i connettori) viene calcolato tramite software di progetto o tabelle fornite da Tecnaria, in funzione del tipo di trave, carichi, luce e tipologia di intervento. Si considerano anche le tensioni di taglio."
+  },
+  {
+    "domanda": "8. Posso usare i connettori Tecnaria per solai storici?",
+    "risposta": "Risposta: Assolutamente sì. I connettori Tecnaria sono progettati anche per il recupero di edifici storici, con sistemi che rispettano il legno antico e permettono l’adeguamento sismico senza demolizioni invasive."
+  },
+  {
+    "domanda": "9. Quali sono gli errori più frequenti nella posa dei connettori?",
+    "risposta": ""
+  },
+  {
+    "domanda": "10. Che spessore minimo deve avere la soletta in calcestruzzo?",
+    "risposta": "Risposta: ● Errato passo o disposizione  ● Fissaggio non corretto (vite troppo corta o non a fondo)  ● Mancato rispetto delle distanze minime dai bordi  ● Pulizia non adeguata in caso di resina  ● Eccesso di tolleranza nella quota del getto   Risposta: Generalmente si consiglia uno spessore minimo di 5 cm sopra la testa della trave, ma dipende dalla destinazione d’uso e dal tipo di connettore."
+  },
+  {
+    "domanda": "11. I connettori Tecnaria sono adatti anche per solai inclinati?",
+    "risposta": "Risposta: Sì, possono essere impiegati anche su solai inclinati, con opportune verifiche di progetto."
+  },
+  {
+    "domanda": "12. Qual è la resistenza a taglio tipica di un connettore Tecnaria?",
+    "risposta": "Risposta: Varia a seconda del modello e del supporto: da circa 10 kN (per connettori legno-calcestruzzo) fino a oltre 40 kN per connettori acciaio-calcestruzzo certificati.  13. Quali sono i principali vantaggi dei connettori a vite rispetto a quelli"
+  },
+  {
+    "domanda": "incollati?",
+    "risposta": "Risposta: ● Velocità di posa  ● Controllo immediato della presa  ● Nessun tempo di attesa di indurimento"
+  },
+  {
+    "domanda": "bagnato?",
+    "risposta": "● Maggiore affidabilità in cantiere   14. È possibile posare i connettori Tecnaria anche in condizioni di Risposta: I connettori a vite possono essere posati anche su legno umido; per i connettori chimici (resina) è richiesta la superficie asciutta per garantire l’adesione."
+  },
+  {
+    "domanda": "15. Che tipo di attrezzi servono per installare i connettori Tecnaria?",
+    "risposta": "Risposta: ● Trapano avvitatore professionale  ● Inserti specifici forniti da Tecnaria  ● Eventuale miscelatore per resine   16. Qual è il ciclo di posa tipico di un solaio misto con connettori"
+  },
+  {
+    "domanda": "Tecnaria?",
+    "risposta": "Risposta: 1. Pulizia e preparazione della trave  2. Tracciamento e posa connettori  3. Posizionamento armature aggiuntive  4. Getto calcestruzzo collaborante  5. Stagionatura"
+  },
+  {
+    "domanda": "17. I connettori Tecnaria sono idonei a zone sismiche?",
+    "risposta": ""
+  },
+  {
+    "domanda": "18. Come si comporta un solaio misto in caso di incendio?",
+    "risposta": "Risposta: Sì, molti sistemi sono testati e certificati per uso sismico. Il miglioramento della collaborazione e della rigidezza del solaio permette anche l’adeguamento sismico degli edifici.  Risposta: Il solaio misto migliora la resistenza al fuoco rispetto a un solaio in legno semplice, grazie al calcestruzzo superiore che protegge le travi e i connettori."
+  },
+  {
+    "domanda": "19. Qual è il costo medio di un intervento con connettori Tecnaria?",
+    "risposta": "Risposta: Dipende da tipologia di solaio, numero di connettori e accessori, ma generalmente il costo è competitivo rispetto ad altri sistemi di rinforzo strutturale.  20. È possibile posare i connettori Tecnaria dall’alto senza smontare il"
+  },
+  {
+    "domanda": "solaio sottostante?",
+    "risposta": "Risposta: Sì, la posa è prevista generalmente dall’alto, senza necessità di accedere al piano inferiore o smontare i tavolati esistenti."
+  },
+  {
+    "domanda": "21. Esistono software di calcolo per solai misti con connettori Tecnaria?",
+    "risposta": "Risposta: Sì, Tecnaria offre software di calcolo gratuito per il dimensionamento del solaio misto e la disposizione ottimale dei connettori.  22. Quali accorgimenti prendere per evitare fessurazioni nel getto di"
+  },
+  {
+    "domanda": "calcestruzzo?",
+    "risposta": "Risposta: ● Utilizzare una corretta stagionatura"
+  },
+  {
+    "domanda": "Tecnaria?",
+    "risposta": "● Inserire armature di ripartizione  ● Eseguire il getto in modo uniforme  ● Prevedere eventuali giunti di dilatazione   23. Come si dimensiona il rinforzo di un solaio in legno con connettori Risposta: Si parte dall’analisi delle condizioni esistenti (ispezione, prove di carico se necessario), quindi si calcola il fabbisogno di collaborazione e si progetta il numero e il passo dei connettori in base alle tabelle tecniche."
+  },
+  {
+    "domanda": "24. Quali tipi di legno sono compatibili con i connettori Tecnaria?",
+    "risposta": "Risposta: Tutte le principali specie di legno da costruzione, sia lamellare che massiccio, con resistenza certificata secondo le normative EN."
+  },
+  {
+    "domanda": "25. Come viene garantita la durabilità dei connettori nel tempo?",
+    "risposta": "Risposta: I connettori sono realizzati in acciaio zincato a caldo o inox, per garantire resistenza alla corrosione anche in ambienti umidi."
+  },
+  {
+    "domanda": "26. I connettori Tecnaria possono essere utilizzati per nuovi solai?",
+    "risposta": "Risposta: Sì, oltre che per il recupero, sono perfetti anche in nuove costruzioni per solai misti efficienti e moderni.  27. Posso posare i connettori Tecnaria da solo o serve una ditta"
+  },
+  {
+    "domanda": "specializzata?",
+    "risposta": ""
+  },
+  {
+    "domanda": "28. Quali norme regolano l’uso dei connettori Tecnaria?",
+    "risposta": "Risposta: La posa è semplice, ma è sempre consigliabile affidarsi a personale esperto per garantire il corretto rispetto delle specifiche tecniche e di sicurezza.  Risposta: Normativa europea EN 1995-1-1 (Eurocodice 5) per il legno, EN 1994-1-1 per l’acciaio, e riferimenti ETA specifici."
+  },
+  {
+    "domanda": "29. Come si verifica la corretta posa dei connettori?",
+    "risposta": "Risposta: Tramite controllo visivo, eventuale verifica della coppia di serraggio (per le viti), fotografie e ispezione dei testimoni di resina (per i chimici)."
+  },
+  {
+    "domanda": "30. Quanto pesa un connettore Tecnaria tipo CTC?",
+    "risposta": "Risposta: Circa 0,2 kg per pezzo, variabile secondo lunghezza e diametro.  31. È possibile vedere una foto della posa corretta di un connettore su"
+  },
+  {
+    "domanda": "trave in legno?",
+    "risposta": "Risposta:"
+  },
+  {
+    "domanda": "32. Serve il preforo per posare un connettore a vite Tecnaria?",
+    "risposta": "Risposta: Generalmente no, la vite è autotrapanante. In caso di legni molto duri può essere richiesto un preforo ridotto.  33. Si possono posare connettori anche su travi di legno con fessure o"
+  },
+  {
+    "domanda": "danni?",
+    "risposta": ""
+  },
+  {
+    "domanda": "34. Quanti connettori occorrono mediamente per una trave da 5 metri?",
+    "risposta": "Risposta: Se le fessure sono limitate e la resistenza del legno è verificata, sì. In caso di danni strutturali è necessario un intervento di consolidamento preventivo.  Risposta: Circa 15–20 connettori, ma dipende da portata e progetto."
+  },
+  {
+    "domanda": "35. Esistono connettori specifici per travi in acciaio?",
+    "risposta": "Risposta: Sì, Tecnaria ha una gamma apposita per acciaio, tra cui connettori saldati o avvitati tipo HBV."
+  },
+  {
+    "domanda": "36. Come si garantisce la perfetta adesione tra calcestruzzo e legno?",
+    "risposta": "Risposta: Pulizia, uso di barriera al vapore se necessario, e posa di armature di ripartizione. Il connettore assicura la collaborazione."
+  },
+  {
+    "domanda": "37. È obbligatoria l’armatura aggiuntiva nella soletta?",
+    "risposta": "Risposta: Sì, è sempre consigliata e in molti casi necessaria per ripartire i carichi e controllare le fessurazioni."
+  },
+  {
+    "domanda": "38. I connettori Tecnaria sono adatti a edifici vincolati (beni culturali)?",
+    "risposta": "Risposta: Sì, sono spesso scelti per interventi conservativi perché minimamente invasivi.  39. Dove posso scaricare le schede tecniche e le certificazioni dei"
+  },
+  {
+    "domanda": "prodotti Tecnaria?",
+    "risposta": "Risposta: Sul sito ufficiale www.tecnaria.com nell’area download."
+  },
+  {
+    "domanda": "40. È possibile ricevere formazione sulla posa e il calcolo?",
+    "risposta": "Risposta: Sì, Tecnaria offre corsi di formazione, webinar e assistenza tecnica personalizzata.  41. Posso vedere un esempio di schema di un solaio misto con"
+  },
+  {
+    "domanda": "connettori Tecnaria?",
+    "risposta": "Risposta:"
+  },
+  {
+    "domanda": "42. Quali errori evitare nel getto della soletta?",
+    "risposta": "Risposta: ● Getto disomogeneo  ● Mancata compattazione  ● Getto troppo veloce che sposta i connettori  ● Mancanza di protezione in caso di pioggia   43. Quanto tempo devo attendere prima di caricare il solaio dopo il"
+  },
+  {
+    "domanda": "getto?",
+    "risposta": "Risposta: Almeno 21–28 giorni di stagionatura del calcestruzzo, secondo normativa.  44. È possibile effettuare prove di carico su un solaio rinforzato con"
+  },
+  {
+    "domanda": "connettori Tecnaria?",
+    "risposta": "Risposta: Sì, e spesso viene fatto per validare l’intervento."
+  },
+  {
+    "domanda": "45. I connettori Tecnaria sono riciclabili?",
+    "risposta": "Risposta: Sì, essendo in acciaio zincato sono totalmente riciclabili a fine vita del fabbricato."
+  },
+  {
+    "domanda": "46. Posso richiedere una consulenza tecnica per il mio progetto?",
+    "risposta": "Risposta: Sì, Tecnaria offre consulenza gratuita anche in fase preliminare.  47. Qual è la profondità minima di ancoraggio di un connettore a vite su"
+  },
+  {
+    "domanda": "legno?",
+    "risposta": "Risposta: Almeno 50 mm all’interno della trave, salvo diversa specifica tecnica."
+  },
+  {
+    "domanda": "48. Quanta resina serve per un connettore chimico?",
+    "risposta": "Risposta: Dipende dal diametro e dalla lunghezza del foro, ma di norma una cartuccia copre circa 20–30 pezzi."
+  },
+  {
+    "domanda": "49. Posso utilizzare i connettori anche su travi in lamellare?",
+    "risposta": "Risposta: Sì, con identiche prestazioni ai travi in legno massiccio.  50. I connettori Tecnaria sono adatti anche per rinforzi di travi in"
+  },
+  {
+    "domanda": "cemento armato?",
+    "risposta": "Risposta: Sì, la linea FLAT è dedicata proprio a questa applicazione."
+  },
+  {
+    "domanda": "51. È necessario il collaudo statico dopo l’intervento?",
+    "risposta": ""
+  },
+  {
+    "domanda": "52. Come si calcola il taglio trasferito dal connettore?",
+    "risposta": "Risposta: Sì, secondo normativa italiana il collaudo statico è richiesto per gli interventi strutturali.  Risposta: Utilizzando i valori di resistenza forniti in ETA e considerando i coefficienti di sicurezza previsti dalla normativa."
+  },
+  {
+    "domanda": "53. Qual è la garanzia dei prodotti Tecnaria?",
+    "risposta": "Risposta: 2 anni come da normativa, ma la durabilità reale è di decenni."
+  },
+  {
+    "domanda": "54. I connettori Tecnaria possono essere usati in ambienti marini?",
+    "risposta": "Risposta: Sì, con connettori in acciaio inox o zincatura maggiorata."
+  },
+  {
+    "domanda": "55. Qual è la differenza tra i vari modelli di connettori per legno?",
+    "risposta": "Risposta: Principalmente la forma (dritta, elicoidale, a piastra), la modalità di fissaggio e il valore di resistenza certificata."
+  },
+  {
+    "domanda": "56. I connettori Tecnaria sono adatti a strutture prefabbricate?",
+    "risposta": "Risposta: Sì, sono largamente usati anche in prefabbricazione.  57. Posso vedere un dettaglio di sezione di solaio misto"
+  },
+  {
+    "domanda": "legno-calcestruzzo con connettore Tecnaria?",
+    "risposta": "Risposta:"
+  },
+  {
+    "domanda": "58. Esistono video tutorial di posa Tecnaria?",
+    "risposta": "Risposta: Sì, sono disponibili sul sito Tecnaria e su YouTube."
+  },
+  {
+    "domanda": "59. Come si smaltisce una cartuccia di resina vuota?",
+    "risposta": "Risposta: Come rifiuto speciale secondo la normativa locale, o presso centri di raccolta."
+  },
+  {
+    "domanda": "60. È possibile recuperare solai con travi curve o irregolari?",
+    "risposta": "Risposta: Sì, con l’ausilio di connettori chimici e studio del dettaglio."
+  },
+  {
+    "domanda": "61. Posso vedere una foto di solaio misto legno-calcestruzzo terminato?",
+    "risposta": "Risposta:"
+  },
+  {
+    "domanda": "62. Come si esegue il controllo qualità sui connettori in cantiere?",
+    "risposta": "Risposta: Verifica visiva, eventuali prove di estrazione a campione, controllo della profondità e serraggio."
+  },
+  {
+    "domanda": "63. Come si previene l’ossidazione dei connettori?",
+    "risposta": "Risposta: Utilizzando connettori zincati o in acciaio inox, evitando ristagni d’acqua durante il getto."
+  },
+  {
+    "domanda": "64. Il sistema Tecnaria è adatto anche per interventi di sopraelevazione?",
+    "risposta": "Risposta: Sì, perché consente di mantenere i solai esistenti incrementandone la portata."
+  },
+  {
+    "domanda": "65. Cosa succede se sbaglio la posizione di un connettore?",
+    "risposta": "Risposta: Se il foro non è usato, va chiuso con resina o tassello. Se la vite è già inserita, occorre rifare il foro rispettando le distanze minime."
+  },
+  {
+    "domanda": "66. Esistono casi studio reali di interventi con Tecnaria?",
+    "risposta": "Risposta: Sì, sono disponibili su richiesta o sul sito Tecnaria."
+  },
+  {
+    "domanda": "67. Cosa succede se non rispetto il passo minimo tra i connettori?",
+    "risposta": "Risposta: Rischi concentrazioni di tensione e prestazioni ridotte; sempre rispettare il passo consigliato."
+  },
+  {
+    "domanda": "68. Qual è la differenza tra solaio collaborante e solaio tradizionale?",
+    "risposta": "Risposta: Il collaborante sfrutta la collaborazione fra diversi materiali (legno e calcestruzzo), mentre il tradizionale no."
+  },
+  {
+    "domanda": "69. Esistono connettori Tecnaria brevettati?",
+    "risposta": "Risposta: Sì, diversi modelli sono coperti da brevetti internazionali."
+  },
+  {
+    "domanda": "70. Il sistema Tecnaria è conforme al Superbonus 110%?",
+    "risposta": "Risposta: Sì, rientra tra gli interventi di miglioramento sismico ed efficientamento strutturale."
+  },
+  {
+    "domanda": "71. Posso vedere un’immagine di connettore Tecnaria tipo VTC?",
+    "risposta": "Risposta:"
+  },
+  {
+    "domanda": "72. Come si pulisce il foro prima di inserire la resina?",
+    "risposta": "Risposta: Usare aria compressa e spazzolino per eliminare polveri e residui.  73. Quali sono le principali innovazioni introdotte da Tecnaria negli ultimi"
+  },
+  {
+    "domanda": "anni?",
+    "risposta": "Risposta: Connettori ad alta resistenza, sistemi per prefabbricazione, soluzioni certificate antisismiche, software di calcolo evoluti."
+  },
+  {
+    "domanda": "74. Come si valuta la rigidità di un solaio rinforzato?",
+    "risposta": "Risposta: Attraverso calcoli FEM o prove di carico."
+  },
+  {
+    "domanda": "75. Quali sono i limiti di utilizzo dei connettori Tecnaria?",
+    "risposta": "Risposta: Non adatti a supporti degradati, ambiente altamente acido (salvo inox), o dove non è garantito il trasferimento di forze."
+  },
+  {
+    "domanda": "76. Cosa contiene il kit di posa Tecnaria?",
+    "risposta": "Risposta: Connettori, viti, eventuale resina, inserti per avvitatore, scheda tecnica."
+  },
+  {
+    "domanda": "77. Posso vedere un dettaglio del fissaggio vite-connettore?",
+    "risposta": "Risposta:"
+  },
+  {
+    "domanda": "78. Che tipo di calcestruzzo usare per la soletta collaborante?",
+    "risposta": ""
+  },
+  {
+    "domanda": "79. Serve la barriera al vapore tra legno e calcestruzzo?",
+    "risposta": "Risposta: Almeno C25/30 (Rck 30 MPa), meglio se a basso ritiro.  Risposta: Spesso consigliata per evitare problemi di umidità al legno."
+  },
+  {
+    "domanda": "80. Come si interviene in presenza di impianti nel solaio?",
+    "risposta": "Risposta: Prevedere scanalature, protezioni o passaggi dedicati, mai forare vicino ai connettori."
+  },
+  {
+    "domanda": "81. Si può posare la soletta collaborante su solaio inclinato?",
+    "risposta": "Risposta: Sì, con adeguata casseratura e getto controllato."
+  },
+  {
+    "domanda": "82. Quanto tempo serve per posare i connettori su 100 mq di solaio?",
+    "risposta": "Risposta: 2–3 giorni con una squadra di 2 persone esperte.  83. Posso vedere uno schema di posa con connettori su trave in"
+  },
+  {
+    "domanda": "acciaio?",
+    "risposta": "Risposta:"
+  },
+  {
+    "domanda": "84. Qual è la differenza tra sistema HBV e HP per acciaio?",
+    "risposta": "Risposta: HBV = fissaggio a vite; HP = fissaggio a piastra saldata."
+  },
+  {
+    "domanda": "connettori?",
+    "risposta": "85. Come si protegge il solaio durante il getto per evitare danni ai Risposta: Coprire con tavolati e protezioni, evitare urti accidentali."
+  },
+  {
+    "domanda": "86. Come si stima la portata di un solaio misto?",
+    "risposta": "Risposta: Tramite calcolo secondo Eurocodice o software specifico."
+  },
+  {
+    "domanda": "87. I connettori Tecnaria possono essere forniti anche in acciaio inox?",
+    "risposta": "Risposta: Sì, su richiesta."
+  },
+  {
+    "domanda": "88. Come si documenta un intervento con connettori Tecnaria?",
+    "risposta": "Risposta: Con fotografie, report di posa, certificazioni materiali, schemi esecutivi."
+  },
+  {
+    "domanda": "89. Come si verifica la collaborazione tra i materiali dopo l’intervento?",
+    "risposta": "Risposta: Con prove di carico e monitoraggio deformazioni.  90. Come si smonta un solaio collaborante per manutenzione"
+  },
+  {
+    "domanda": "straordinaria?",
+    "risposta": "Risposta: Non è previsto smontaggio, ma eventuale taglio parziale della soletta e rimozione connettori danneggiati.  91. Esistono connettori specifici per interventi rapidi (ad esempio su"
+  },
+  {
+    "domanda": "ponti o strutture temporanee)?",
+    "risposta": ""
+  },
+  {
+    "domanda": "92. Posso vedere una foto di cantiere con posa connettori?",
+    "risposta": "Risposta: Sì, Tecnaria sviluppa sistemi anche per cantieri rapidi.  Risposta:"
+  },
+  {
+    "domanda": "93. Qual è l’impatto ambientale dei prodotti Tecnaria?",
+    "risposta": "Risposta: Molto basso grazie al riciclo, al recupero di strutture esistenti e alla riduzione di spreco di materiali."
+  },
+  {
+    "domanda": "94. Come richiedere un preventivo personalizzato Tecnaria?",
+    "risposta": "Risposta: Tramite il sito o contattando direttamente il reparto tecnico.  95. Quali sono le principali cause di errore nel calcolo di un solaio"
+  },
+  {
+    "domanda": "misto?",
+    "risposta": "Risposta: Sottostima carichi accidentali, passo errato, trascurare deformazioni differite.  96. Posso intervenire su un solaio misto già esistente per incrementarne"
+  },
+  {
+    "domanda": "la portata?",
+    "risposta": "Risposta: Sì, aggiungendo una seconda soletta collaborante oppure aumentando i connettori secondo nuova verifica.  97. Si possono usare i connettori Tecnaria anche in zona umida o di"
+  },
+  {
+    "domanda": "montagna?",
+    "risposta": ""
+  },
+  {
+    "domanda": "98. Come si riconosce un connettore Tecnaria originale?",
+    "risposta": "Risposta: Sì, preferendo acciaio inox o zincatura pesante.  Risposta: Tramite marchiatura, etichetta e certificazione allegata."
+  },
+  {
+    "domanda": "99. Esistono detrazioni fiscali per l’uso dei prodotti Tecnaria?",
+    "risposta": "Risposta: Sì, per miglioramento sismico, energetico e consolidamento strutturale."
+  },
+  {
+    "domanda": "100. Dove posso trovare la lista di distributori ufficiali Tecnaria?",
+    "risposta": "Risposta: Sul sito ufficiale nella sezione “Dove Siamo”."
+  }
+]
