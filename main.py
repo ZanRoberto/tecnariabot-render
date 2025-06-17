@@ -8,7 +8,7 @@ app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Carica il file JSON delle FAQ
-with open("faq_tecnaria.json", "r", encoding="utf-8") as f:
+with open("data/faq_tecnaria.json", "r", encoding="utf-8") as f:
     faq_data = json.load(f)
 
 @app.route("/")
