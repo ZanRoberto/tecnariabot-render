@@ -5,6 +5,7 @@ import json
 import numpy as np
 from difflib import SequenceMatcher
 from pathlib import Path
+import fitz  # PyMuPDF per lettura PDF
 
 app = Flask(__name__)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -13,6 +14,12 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 FAQ_JSON_PATH = "data/faq_tecnaria.json"
 EMBEDDINGS_PATH = "data/faq_embeddings.json"
 SIMILARITY_THRESHOLD = 0.80
+PDF_PATHS = [
+    "data/cataloghi/CT_C_CATALOGO_IT.pdf",
+    "data/cataloghi/CT_L_CATALOGO_IT.pdf",
+    "data/cataloghi/CT_F_CATALOGO_IT.pdf",
+    "data/cataloghi/CT_LISTINI_IT.pdf"
+]
 
 # === Caricamento FAQ ===
 with open(FAQ_JSON_PATH, "r", encoding="utf-8") as f:
@@ -61,6 +68,25 @@ else:
     with open(EMBEDDINGS_PATH, "r", encoding="utf-8") as f:
         faq_embeddings = json.load(f)
 
+# === Cerca nei cataloghi PDF ===
+def cerca_nei_cataloghi(domanda):
+    risultati = []
+    for percorso in PDF_PATHS:
+        nome = percorso.split("/")[-1]
+        try:
+            with fitz.open(percorso) as pdf:
+                for pagina in pdf:
+                    testo = pagina.get_text()
+                    if domanda.lower() in testo.lower():
+                        risultati.append({
+                            "file": nome,
+                            "pagina": pagina.number + 1,
+                            "estratto": testo.strip()[:500]
+                        })
+        except Exception as e:
+            risultati.append({"file": nome, "pagina": 0, "estratto": f"Errore: {e}"})
+    return risultati
+
 @app.route("/")
 def home():
     return render_template("chat.html")
@@ -87,6 +113,13 @@ def ask():
     if miglior_score >= SIMILARITY_THRESHOLD:
         immagine = cerca_immagine(user_message)
         return jsonify({"response": f"📚 Risposta dalle FAQ Tecnaria:<br>{migliore['risposta']}{immagine}"})
+
+    # Cerca anche nei PDF
+    risultati_pdf = cerca_nei_cataloghi(user_message)
+    if risultati_pdf:
+        r = risultati_pdf[0]
+        immagine = cerca_immagine(user_message)
+        return jsonify({"response": f"📄 Trovato in <b>{r['file']}</b> (pagina {r['pagina']}):<br><br>{r['estratto']}{immagine}"})
 
     # Altrimenti passa a GPT
     response = client.chat.completions.create(
