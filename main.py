@@ -68,8 +68,6 @@ def home():
 @app.route("/ask", methods=["POST"])
 def ask():
     user_message = request.json.get("message", "")
-    if not is_rilevante(user_message):
-        return jsonify({"response": "Questo assistente risponde solo su contenuti relativi a Tecnaria."})
 
     # Genera embedding della domanda
     embedding_utente = client.embeddings.create(
@@ -94,18 +92,13 @@ def ask():
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "Rispondi solo su argomenti riguardanti Tecnaria. Rifiuta gentilmente domande esterne."},
+            {"role": "system", "content": "Rispondi esclusivamente su contenuti relativi all’azienda TECNARIA. Se una domanda riguarda altri marchi o prodotti non correlati, rifiuta gentilmente e invita a riformulare."},
             {"role": "user", "content": user_message}
         ]
     )
     risposta = response.choices[0].message.content
     immagine = cerca_immagine(user_message)
     return jsonify({"response": f"🤖 Risposta generata da GPT:<br>{risposta}{immagine}"})
-
-def is_rilevante(msg):
-    keywords = ["tecnaria", "connettore", "solaio", "omega", "flap", "maxi", "ctf", "ordini", "forniture", "software"]
-    msg = msg.lower()
-    return any(word in msg for word in keywords)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=10000)
