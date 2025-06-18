@@ -23,11 +23,13 @@ def ask():
         return jsonify({"response": "Questo assistente risponde solo su contenuti relativi a Tecnaria."})
 
     # Cerca risposta nelle FAQ con similarità
-    risposta_faq = cerca_faq(user_message)
+    risposta_faq, domanda_matchata, punteggio = cerca_faq(user_message)
     if risposta_faq:
+        print(f"➡️ Match FAQ: '{domanda_matchata}' (score: {punteggio:.2f})")
         return jsonify({"response": f"📚 Risposta dalle FAQ Tecnaria:\n{risposta_faq}"})
 
     # Se non trovata nelle FAQ, chiama OpenAI
+    print("⏩ Nessun match sufficiente, passo a GPT")
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
@@ -49,14 +51,16 @@ def similar(a, b):
 def cerca_faq(messaggio):
     messaggio = messaggio.lower().strip()
     migliore = None
-    punteggio_massimo = 0.7  # soglia di similarità
+    domanda_matchata = None
+    punteggio_massimo = 0.6  # soglia più permissiva
     for voce in faq_data:
         domanda = voce["domanda"].lower().strip()
         score = similar(messaggio, domanda)
         if score > punteggio_massimo:
             punteggio_massimo = score
             migliore = voce["risposta"]
-    return migliore
+            domanda_matchata = domanda
+    return migliore, domanda_matchata, punteggio_massimo
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=10000)
