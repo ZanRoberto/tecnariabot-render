@@ -1,3 +1,5 @@
 flask
 openai
 numpy
+fitz
+gunicorn
