@@ -98,7 +98,7 @@ def ask():
     )
     risposta = response.choices[0].message.content
     immagine = cerca_immagine(user_message)
-    return jsonify({"response": f"🤖 Risposta generata da GPT:<br>{risposta}{immagine}"})
+    return jsonify({"response": f"{risposta}{immagine}"})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=10000)
