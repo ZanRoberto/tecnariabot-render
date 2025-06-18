@@ -18,6 +18,19 @@ SIMILARITY_THRESHOLD = 0.80
 with open(FAQ_JSON_PATH, "r", encoding="utf-8") as f:
     faq_data = json.load(f)
 
+# === Mappa immagini ===
+mappa_immagini = {
+    "acciaio": "Connettori-acciaio-510x510.jpg",
+    "legno base": "3.1.3_001_connettori_solai_legno_base-510x510.jpg"
+}
+
+def cerca_immagine(messaggio):
+    msg = messaggio.lower()
+    for chiave, file_img in mappa_immagini.items():
+        if chiave in msg:
+            return f"<br><img src='/static/img/{file_img}' alt='{chiave}' style='max-width:100%; margin-top:10px;'>"
+    return ""
+
 # === Funzioni di supporto ===
 def cosine_similarity(vec1, vec2):
     vec1 = np.array(vec1)
@@ -74,7 +87,8 @@ def ask():
             migliore = voce
 
     if miglior_score >= SIMILARITY_THRESHOLD:
-        return jsonify({"response": f"📚 Risposta dalle FAQ Tecnaria:\n{migliore['risposta']}"})
+        immagine = cerca_immagine(user_message)
+        return jsonify({"response": f"📚 Risposta dalle FAQ Tecnaria:<br>{migliore['risposta']}{immagine}"})
 
     # Altrimenti passa a GPT
     response = client.chat.completions.create(
@@ -85,7 +99,8 @@ def ask():
         ]
     )
     risposta = response.choices[0].message.content
-    return jsonify({"response": f"🤖 Risposta generata da GPT:\n{risposta}"})
+    immagine = cerca_immagine(user_message)
+    return jsonify({"response": f"🤖 Risposta generata da GPT:<br>{risposta}{immagine}"})
 
 def is_rilevante(msg):
     keywords = ["tecnaria", "connettore", "solaio", "omega", "flap", "maxi", "ctf", "ordini", "forniture", "software"]
