@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from openai import OpenAI
+import openai
 import os
 import json
 import numpy as np
@@ -8,7 +8,7 @@ from pathlib import Path
 import fitz  # PyMuPDF per lettura PDF
 
 app = Flask(__name__)
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # === Costanti ===
 FAQ_JSON_PATH = "data/faq_tecnaria.json"
@@ -48,7 +48,7 @@ def genera_embeddings():
     embeddings = []
     for voce in faq_data:
         domanda = voce["domanda"]
-        embedding = client.embeddings.create(
+        embedding = openai.embeddings.create(
             model="text-embedding-3-small",
             input=domanda
         ).data[0].embedding
@@ -96,7 +96,7 @@ def ask():
     user_message = request.json.get("message", "")
 
     # Genera embedding della domanda
-    embedding_utente = client.embeddings.create(
+    embedding_utente = openai.embeddings.create(
         model="text-embedding-3-small",
         input=user_message
     ).data[0].embedding
@@ -122,7 +122,7 @@ def ask():
         return jsonify({"response": f"📄 Trovato in <b>{r['file']}</b> (pagina {r['pagina']}):<br><br>{r['estratto']}{immagine}"})
 
     # Altrimenti passa a GPT
-    response = client.chat.completions.create(
+    response = openai.chat.completions.create(
         model="gpt-4o",
         messages=[
             {"role": "system", "content": "Rispondi esclusivamente su contenuti relativi all’azienda TECNARIA. Se una domanda riguarda altri marchi o prodotti non correlati, rifiuta gentilmente e invita a riformulare."},
