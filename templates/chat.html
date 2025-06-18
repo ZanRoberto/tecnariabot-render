@@ -49,7 +49,7 @@
       color: #1A1A1A;
     }
     input[type="text"] {
-      width: calc(100% - 90px);
+      width: calc(100% - 130px);
       padding: 10px;
       margin-top: 10px;
       border: 1px solid #ccc;
@@ -57,12 +57,12 @@
       font-size: 15px;
     }
     button {
-      padding: 10px 18px;
+      padding: 10px 14px;
       background-color: #F05100;
       color: #fff;
       border: none;
       border-radius: 6px;
-      margin-left: 10px;
+      margin-left: 6px;
       cursor: pointer;
       font-size: 15px;
     }
@@ -78,8 +78,11 @@
       <img src="/static/img/301177716_219398370410778_7024928066594549425_n.jpg" alt="Tecnaria Logo">
     </div>
     <div id="chat"></div>
-    <input type="text" id="user-input" placeholder="Scrivi la tua domanda...">
-    <button onclick="sendMessage()">Invia</button>
+    <div style="display: flex; align-items: center;">
+      <input type="text" id="user-input" placeholder="Scrivi la tua domanda...">
+      <button onclick="startVoice()">🎤</button>
+      <button onclick="sendMessage()">Invia</button>
+    </div>
   </div>
 
   <script>
@@ -104,6 +107,30 @@
         chat.innerHTML += `<div class='entry'><img src='/static/img/301177716_219398370410778_7024928066594549425_n.jpg' alt='Logo' style='height:18px; vertical-align:middle; margin-right:6px;'> ${data.response}</div>`;
         chat.scrollTop = chat.scrollHeight;
       });
+    }
+
+    function startVoice() {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Il tuo browser non supporta la dettatura vocale.");
+        return;
+      }
+
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = "it-IT";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById("user-input").value = transcript;
+        sendMessage();
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Errore di riconoscimento vocale:", event.error);
+      };
     }
   </script>
 </body>
