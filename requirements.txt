@@ -3,3 +3,4 @@ openai
 numpy
 fitz
 gunicorn
+PyMuPDF==1.24.1
