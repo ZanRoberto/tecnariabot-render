@@ -2,37 +2,102 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TecnariaBot</title>
   <style>
-    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
-    #chat { max-width: 600px; margin: auto; background: white; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    .msg { margin: 10px 0; }
-    .user { font-weight: bold; }
+    body {
+      background-color: #F0F0F0;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+    }
+    .chat-container {
+      background-color: #FFFFFF;
+      width: 90%;
+      max-width: 600px;
+      margin-top: 60px;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      height: 45px;
+      margin-right: 14px;
+    }
+    .logo h1 {
+      color: #F05100;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .entry {
+      margin: 12px 0;
+    }
+    .entry strong {
+      color: #F05100;
+    }
+    input[type="text"] {
+      width: calc(100% - 80px);
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 10px 18px;
+      background-color: #F05100;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #C94000;
+    }
   </style>
 </head>
 <body>
-  <div id="chat">
-    <h2>🤖 TecnariaBot</h2>
-    <div id="chatlog"></div>
-    <input id="input" placeholder="Scrivi la tua domanda..." style="width:80%;">
-    <button onclick="send()">Invia</button>
+  <div class="chat-container">
+    <div class="logo">
+      <img src="/static/img/301177716_219398370410778_7024928066594549425_n.jpg" alt="Tecnaria Logo">
+      <h1>TecnariaBot</h1>
+    </div>
+    <div id="chat"></div>
+    <input type="text" id="user-input" placeholder="Scrivi la tua domanda...">
+    <button onclick="sendMessage()">Invia</button>
   </div>
 
   <script>
-    async function send() {
-      const input = document.getElementById("input");
-      const message = input.value;
-      document.getElementById("chatlog").innerHTML += `<div class='msg'><span class='user'>Tu:</span> ${message}</div>`;
+    function sendMessage() {
+      const input = document.getElementById("user-input");
+      const message = input.value.trim();
+      if (!message) return;
+
+      const chat = document.getElementById("chat");
+      chat.innerHTML += `<div class='entry'><strong>Tu:</strong> ${message}</div>`;
       input.value = "";
 
-      const res = await fetch("/ask", {
+      fetch("/ask", {
         method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({message})
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message })
+      })
+      .then(res => res.json())
+      .then(data => {
+        chat.innerHTML += `<div class='entry'><strong>Bot:</strong> ${data.response}</div>`;
+        chat.scrollTop = chat.scrollHeight;
       });
-      const data = await res.json();
-      document.getElementById("chatlog").innerHTML += `<div class='msg'><span class='user'>Bot:</span> ${data.response}</div>`;
     }
   </script>
 </body>
