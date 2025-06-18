@@ -24,7 +24,7 @@ def ask():
     # Cerca risposta nelle FAQ
     risposta_faq = cerca_faq(user_message)
     if risposta_faq:
-        return jsonify({"response": risposta_faq})
+        return jsonify({"response": f"📚 Risposta dalle FAQ Tecnaria:\n{risposta_faq}"})
 
     # Se non trovata nelle FAQ, chiama OpenAI
     response = client.chat.completions.create(
@@ -34,7 +34,8 @@ def ask():
             {"role": "user", "content": user_message}
         ]
     )
-    return jsonify({"response": response.choices[0].message.content})
+    risposta = response.choices[0].message.content
+    return jsonify({"response": f"🤖 Risposta generata da GPT:\n{risposta}"})
 
 def is_rilevante(msg):
     keywords = ["tecnaria", "connettore", "solaio", "omega", "flap", "maxi", "ctf", "ordini", "forniture", "software"]
