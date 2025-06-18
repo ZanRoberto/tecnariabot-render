@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from openai import OpenAI
 import os
 import json
+from difflib import SequenceMatcher
 
 app = Flask(__name__)
 
@@ -21,7 +22,7 @@ def ask():
     if not is_rilevante(user_message):
         return jsonify({"response": "Questo assistente risponde solo su contenuti relativi a Tecnaria."})
 
-    # Cerca risposta nelle FAQ
+    # Cerca risposta nelle FAQ con similarità
     risposta_faq = cerca_faq(user_message)
     if risposta_faq:
         return jsonify({"response": f"📚 Risposta dalle FAQ Tecnaria:\n{risposta_faq}"})
@@ -42,13 +43,20 @@ def is_rilevante(msg):
     msg = msg.lower()
     return any(word in msg for word in keywords)
 
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
+
 def cerca_faq(messaggio):
     messaggio = messaggio.lower().strip()
+    migliore = None
+    punteggio_massimo = 0.7  # soglia di similarità
     for voce in faq_data:
         domanda = voce["domanda"].lower().strip()
-        if domanda in messaggio or messaggio in domanda:
-            return voce["risposta"]
-    return None
+        score = similar(messaggio, domanda)
+        if score > punteggio_massimo:
+            punteggio_massimo = score
+            migliore = voce["risposta"]
+    return migliore
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=10000)
