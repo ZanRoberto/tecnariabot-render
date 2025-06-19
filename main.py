@@ -19,15 +19,12 @@ def ask():
             {
                 "role": "system",
                 "content": (
-                    "Agisci come esperto ufficiale della Tecnaria S.p.A. "
-                    "e rispondi solo su prodotti, soluzioni tecniche, certificazioni, chiodatrici, schede tecniche, contatti, "
-                    "e servizi offerti da Tecnaria. Se una domanda non riguarda direttamente Tecnaria, invita l'utente a riformularla."
+                    "Agisci come esperto ufficiale della società Tecnaria S.p.A. Rispondi con precisione, "
+                    "usando fonti aggiornate dal web solo se riguardano direttamente Tecnaria, i suoi prodotti "
+                    "o servizi. Se la domanda è su altro, inviti l’utente a riformulare in modo pertinente."
                 )
             },
-            {
-                "role": "user",
-                "content": user_message
-            }
+            {"role": "user", "content": user_message}
         ]
     )
 
@@ -35,4 +32,4 @@ def ask():
     return jsonify({"response": risposta})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=10000)
+    app.run(host="0.0.0.0", port=10000)
