@@ -87,6 +87,12 @@
   </div>
 
   <script>
+    // Messaggio di benvenuto automatico
+    window.addEventListener("DOMContentLoaded", () => {
+      const chat = document.getElementById("chat");
+      chat.innerHTML += `<div class='entry'><img src='/static/img/301177716_219398370410778_7024928066594549425_n.jpg' alt='Logo' style='height:18px; vertical-align:middle; margin-right:6px;'> Salve, sono l'assistente virtuale di <strong>Tecnaria</strong>. Come posso aiutarla?</div>`;
+    });
+
     function sendMessage() {
       const input = document.getElementById("user-input");
       const message = input.value.trim();
