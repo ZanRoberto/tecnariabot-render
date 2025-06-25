@@ -26,6 +26,10 @@ FILE_SET = [
     {
         "faq_json": "data/Solaio_Laterocemento_Completo_QA.json",
         "embedding_json": "data/Solaio_Laterocemento_Completo_QA_EMBEDDING.json"
+    },
+    {
+        "faq_json": "data/Luogo_Orari_Supporto_QA.json",
+        "embedding_json": "data/Luogo_Orari_Supporto_QA_EMBEDDING.json"
     }
 ]
 
