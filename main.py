@@ -47,7 +47,7 @@ def ask():
     try:
         # 1. Calcola embedding della domanda utente
         embedding_utente = openai.embeddings.create(
-            model="text-embedding-3-small",
+            model="text-embedding-ada-002",
             input=user_message
         ).data[0].embedding
 
