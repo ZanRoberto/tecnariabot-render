@@ -3,11 +3,11 @@ import openai
 import os
 import json
 import numpy as np
+from pathlib import Path
 
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# === Prompt specializzato su TECNARIA Bassano ===
 SYSTEM_PROMPT = (
     "Rispondi esclusivamente in qualità di rappresentante esperto della società TECNARIA S.p.A., "
     "con sede unica in Viale Pecori Giraldi 55, 36061 Bassano del Grappa (VI), Italia. "
@@ -17,19 +17,30 @@ SYSTEM_PROMPT = (
     "Per indirizzo, recapiti e posizione geografica, fai riferimento alla sede di Bassano del Grappa."
 )
 
-# === Percorsi file ===
-FAQ_JSON_PATH = "data/FAQ_Tecnaria_JSON_Esteso_Completo.json"
-EMBEDDINGS_PATH = "data/FAQ_Tecnaria_JSON_Esteso_Completo_EMBEDDING.json"
+# === LISTA DEI FILE JSON E EMBEDDING ===
+FILE_SET = [
+    {
+        "faq_json": "data/FAQ_Tecnaria_JSON_Esteso_Completo.json",
+        "embedding_json": "data/FAQ_Tecnaria_JSON_Esteso_Completo_EMBEDDING.json"
+    },
+    {
+        "faq_json": "data/Solaio_Laterocemento_Completo_QA.json",
+        "embedding_json": "data/Solaio_Laterocemento_Completo_QA_EMBEDDING.json"
+    }
+]
+
 SIMILARITY_THRESHOLD = 0.80
 
-# === Caricamento dati ===
-with open(FAQ_JSON_PATH, "r", encoding="utf-8") as f:
-    faq_data = json.load(f)
+# === Caricamento di tutte le FAQ e embedding ===
+faq_data = []
+faq_embeddings = []
 
-with open(EMBEDDINGS_PATH, "r", encoding="utf-8") as f:
-    faq_embeddings = json.load(f)
+for files in FILE_SET:
+    with open(files["faq_json"], "r", encoding="utf-8") as f_json:
+        faq_data.extend(json.load(f_json))
+    with open(files["embedding_json"], "r", encoding="utf-8") as f_embed:
+        faq_embeddings.extend(json.load(f_embed))
 
-# === Funzione di similarità ===
 def cosine_similarity(vec1, vec2):
     vec1 = np.array(vec1)
     vec2 = np.array(vec2)
@@ -44,13 +55,13 @@ def ask():
     user_message = request.json.get("message", "").strip()
 
     try:
-        # 1. Calcola embedding coerente
+        # 1. Calcola embedding della domanda utente
         embedding_utente = openai.embeddings.create(
             model="text-embedding-3-small",
             input=user_message
         ).data[0].embedding
 
-        # 2. Cerca tra le FAQ
+        # 2. Cerca la risposta migliore tra tutte le FAQ caricate
         migliore = None
         miglior_score = 0
         for voce in faq_embeddings:
@@ -62,7 +73,7 @@ def ask():
         if miglior_score >= SIMILARITY_THRESHOLD:
             return jsonify({"response": migliore["risposta"]})
 
-        # 3. Altrimenti, passa a GPT
+        # 3. Se nessuna FAQ è abbastanza simile, passa a GPT-4o con contesto specializzato
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
