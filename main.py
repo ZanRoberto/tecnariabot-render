@@ -30,7 +30,7 @@ with open(FAQ_JSON_PATH, "r", encoding="utf-8") as f:
 with open(EMBEDDINGS_PATH, "r", encoding="utf-8") as f:
     faq_embeddings = json.load(f)
 
-# === Funzione similarità ===
+# === Funzione di similarità coseno ===
 def cosine_similarity(vec1, vec2):
     vec1 = np.array(vec1)
     vec2 = np.array(vec2)
@@ -45,13 +45,13 @@ def ask():
     user_message = request.json.get("message", "").strip()
 
     try:
-        # 1. Calcola embedding della domanda
+        # 1. Calcola embedding della domanda utente
         embedding_utente = openai.embeddings.create(
             model="text-embedding-3-small",
             input=user_message
         ).data[0].embedding
 
-        # 2. Cerca la risposta più simile tra le FAQ
+        # 2. Cerca la risposta tra le FAQ
         migliore = None
         miglior_score = 0
         for voce in faq_embeddings:
@@ -63,7 +63,7 @@ def ask():
         if miglior_score >= SIMILARITY_THRESHOLD:
             return jsonify({"response": migliore["risposta"]})
 
-        # 3. Altrimenti passa a GPT-4 con contesto specializzato
+        # 3. Se non trovata, passa a GPT-4 con prompt aziendale
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
