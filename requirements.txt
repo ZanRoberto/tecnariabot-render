@@ -2,3 +2,5 @@ flask
 openai
 gunicorn
 numpy
+beautifulsoup4
+requests
