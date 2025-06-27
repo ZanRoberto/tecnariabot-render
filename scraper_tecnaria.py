@@ -12,25 +12,23 @@ def cerca_online_tecnaria(domanda, max_url=1):
     url = f"https://www.google.com/search?q={quote_plus(query)}"
 
     try:
-        # Richiesta a Google Search
         response = requests.get(url, headers=HEADERS)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # Trova i link risultati
         risultati = []
         for a in soup.select("a"):
             href = a.get("href")
             if href and "/url?q=" in href and "tecnaria.com" in href:
-                link = href.split("/url?q=")[1].split("&sa=")[0]
+                link = href.split("/url?q=")[1].split("&")[0]
                 if link not in risultati:
                     risultati.append(link)
             if len(risultati) >= max_url:
                 break
 
-        # Recupera contenuto dal primo risultato
         if risultati:
+            print(f"🌐 URL scelto per lo scraping: {risultati[0]}")
             testo = estrai_testo_da_url(risultati[0])
-            return testo
+            return testo.strip()
         else:
             return "(Nessuna informazione trovata sul sito tecnaria.com)"
 
@@ -42,21 +40,18 @@ def estrai_testo_da_url(url):
         response = requests.get(url, headers=HEADERS, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # Rimuove script e stile
-        for tag in soup(["script", "style", "noscript"]):
+        for tag in soup(["script", "style", "noscript", "footer", "header", "form", "nav"]):
             tag.decompose()
 
-        # Raccoglie il testo visibile
         testo = " ".join(chunk.strip() for chunk in soup.stripped_strings)
-
-        # Pulizia base
         testo = re.sub(r"\s+", " ", testo)
-        return testo[:3000]  # massimo 3000 caratteri per contesto
+        return testo[:3000]  # massimo 3000 caratteri
 
     except Exception as e:
         return f"(Errore nel recupero contenuto: {e})"
 
-# Esempio uso manuale
+# Test manuale
 if __name__ == "__main__":
     domanda = "Che chiodatrici vende Tecnaria?"
+    print("\n📥 Contenuto recuperato:\n")
     print(cerca_online_tecnaria(domanda))
