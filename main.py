@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import openai
 import os
+from scraper_tecnaria import cerca_online_tecnaria  # ✅ IMPORTA modulo scraping
 
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -30,9 +31,15 @@ def ask():
                 {"role": "user", "content": user_message}
             ]
         )
-        risposta = response.choices[0].message.content
+        risposta = response.choices[0].message.content.strip()
     except Exception as e:
-        risposta = f"⚠️ Errore nella risposta: {e}"
+        risposta = f"⚠️ Errore: {e}\nCerco online…"
+        # 🔁 In caso di errore, prova con scraping
+        risposta = cerca_online_tecnaria(user_message)
+
+    # Se risposta vuota o troppo generica, fallback anche a scraping
+    if not risposta or "non sono sicuro" in risposta.lower() or "non posso" in risposta.lower():
+        risposta = cerca_online_tecnaria(user_message)
 
     return jsonify({"response": risposta})
 
