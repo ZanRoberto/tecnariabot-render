@@ -22,24 +22,19 @@ def home():
 @app.route("/ask", methods=["POST"])
 def ask():
     user_message = request.json.get("message", "").strip()
+    contesto_scraping = cerca_online_tecnaria(user_message)
 
     try:
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_message}
+                {"role": "user", "content": f"Domanda: {user_message}\n\nInformazioni raccolte da tecnaria.com:\n{contesto_scraping}"}
             ]
         )
         risposta = response.choices[0].message.content.strip()
     except Exception as e:
-        risposta = f"⚠️ Errore: {e}\nCerco online…"
-        # 🔁 In caso di errore, prova con scraping
-        risposta = cerca_online_tecnaria(user_message)
-
-    # Se risposta vuota o troppo generica, fallback anche a scraping
-    if not risposta or "non sono sicuro" in risposta.lower() or "non posso" in risposta.lower():
-        risposta = cerca_online_tecnaria(user_message)
+        risposta = f"⚠️ Errore nella risposta: {e}\n\nContesto trovato:\n{contesto_scraping}"
 
     return jsonify({"response": risposta})
 
