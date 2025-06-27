@@ -6,8 +6,7 @@ from scraper_tecnaria import cerca_online_tecnaria  # ✅ IMPORTA modulo scrapin
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# === Prompt specializzato su TECNARIA Bassano ===
-SYSTEM_PROMPT = (
+BASE_SYSTEM_PROMPT = (
     "Agisci come assistente esperto della società TECNARIA S.p.A., con sede unica in Viale Pecori Giraldi 55, 36061 Bassano del Grappa (VI), Italia. "
     "Concentrati esclusivamente su questa azienda e sui suoi prodotti e servizi. "
     "Se l'utente menziona altre aziende omonime, ignorale. "
@@ -22,31 +21,24 @@ def home():
 @app.route("/ask", methods=["POST"])
 def ask():
     user_message = request.json.get("message", "").strip()
-
-    # 1. Cerca online da tecnaria.com
+    
+    # 📥 Recupera testo dalla pagina Tecnaria (via scraping)
     contesto_scraping = cerca_online_tecnaria(user_message)
+    
+    # 🔁 Unisce il prompt fisso con il contesto
+    system_prompt = BASE_SYSTEM_PROMPT + "\n\nContesto raccolto dal sito Tecnaria:\n" + contesto_scraping
 
     try:
-        # 2. Invia a GPT con contesto reale integrato
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {
-                    "role": "user",
-                    "content": f"""Domanda: {user_message}
-
-Informazioni raccolte dal sito tecnaria.com:
-{contesto_scraping}
-
-Rispondi come se fossi l'assistente ufficiale Tecnaria, basandoti su queste informazioni."""
-                }
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_message}
             ]
         )
         risposta = response.choices[0].message.content.strip()
-
     except Exception as e:
-        risposta = f"⚠️ Errore nella risposta: {e}\n\n🔍 Risultato dallo scraping:\n{contesto_scraping}"
+        risposta = f"⚠️ Errore nella risposta: {e}\n\nContesto trovato:\n{contesto_scraping}"
 
     return jsonify({"response": risposta})
 
