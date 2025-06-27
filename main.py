@@ -22,19 +22,31 @@ def home():
 @app.route("/ask", methods=["POST"])
 def ask():
     user_message = request.json.get("message", "").strip()
+
+    # 1. Cerca online da tecnaria.com
     contesto_scraping = cerca_online_tecnaria(user_message)
 
     try:
+        # 2. Invia a GPT con contesto reale integrato
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": f"Domanda: {user_message}\n\nInformazioni raccolte da tecnaria.com:\n{contesto_scraping}"}
+                {
+                    "role": "user",
+                    "content": f"""Domanda: {user_message}
+
+Informazioni raccolte dal sito tecnaria.com:
+{contesto_scraping}
+
+Rispondi come se fossi l'assistente ufficiale Tecnaria, basandoti su queste informazioni."""
+                }
             ]
         )
         risposta = response.choices[0].message.content.strip()
+
     except Exception as e:
-        risposta = f"⚠️ Errore nella risposta: {e}\n\nContesto trovato:\n{contesto_scraping}"
+        risposta = f"⚠️ Errore nella risposta: {e}\n\n🔍 Risultato dallo scraping:\n{contesto_scraping}"
 
     return jsonify({"response": risposta})
 
