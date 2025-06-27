@@ -7,11 +7,10 @@ app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 BASE_SYSTEM_PROMPT = (
-    "Agisci come assistente esperto della società TECNARIA S.p.A., con sede unica in Viale Pecori Giraldi 55, 36061 Bassano del Grappa (VI), Italia. "
-    "Concentrati esclusivamente su questa azienda e sui suoi prodotti e servizi. "
-    "Se l'utente menziona altre aziende omonime, ignorale. "
-    "Puoi fornire qualsiasi informazione utile su prodotti, usi, caratteristiche tecniche e dettagli pratici, "
-    "anche se non presente nei cataloghi, purché rilevante per Tecnaria S.p.A. "
+    "Agisci come assistente ufficiale della società TECNARIA S.p.A., con sede unica in Viale Pecori Giraldi 55, 36061 Bassano del Grappa (VI), Italia. "
+    "Rispondi solo su prodotti, servizi e contenuti reali riconducibili a questa azienda. "
+    "Ignora qualsiasi riferimento ad aziende con nome simile o contenuti non verificabili su tecnaria.com. "
+    "Mantieni un tono tecnico, chiaro e professionale. "
 )
 
 @app.route("/")
@@ -21,12 +20,13 @@ def home():
 @app.route("/ask", methods=["POST"])
 def ask():
     user_message = request.json.get("message", "").strip()
-    
-    # 📥 Recupera testo dalla pagina Tecnaria (via scraping)
+
+    # 🔍 Scraping mirato su tecnaria.com
     contesto_scraping = cerca_online_tecnaria(user_message)
-    
-    # 🔁 Unisce il prompt fisso con il contesto
-    system_prompt = BASE_SYSTEM_PROMPT + "\n\nContesto raccolto dal sito Tecnaria:\n" + contesto_scraping
+    print("\n📎 CONTENUTO SCRAPING TECNARIA:\n", contesto_scraping[:1000], "\n---")  # Debug console (max 1000 char)
+
+    # 🔧 Integrazione nel prompt
+    system_prompt = BASE_SYSTEM_PROMPT + "\n\n--- CONTENUTO TECNARIA.COM ---\n" + contesto_scraping + "\n---"
 
     try:
         response = openai.chat.completions.create(
