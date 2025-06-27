@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 import openai
 import os
-from scraper_tecnaria import cerca_online_tecnaria  # ✅ IMPORTA modulo scraping
+from scraper_tecnaria import cerca_online_tecnaria
+from chat_corpus_local import trova_contesto_rilevante  # ✅ nuovo modulo integrato
 
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# === Prompt specializzato su TECNARIA Bassano ===
 BASE_SYSTEM_PROMPT = (
     "Agisci come assistente esperto della società TECNARIA S.p.A., con sede unica in Viale Pecori Giraldi 55, 36061 Bassano del Grappa (VI), Italia. "
     "Concentrati esclusivamente su questa azienda e sui suoi prodotti e servizi. "
@@ -23,23 +23,28 @@ def home():
 def ask():
     user_message = request.json.get("message", "").strip()
 
-    # 📥 Recupera testo dalla pagina Tecnaria (via scraping mirato)
-    contesto_scraping = cerca_online_tecnaria(user_message)
+    # 1️⃣ Cerca prima nel corpus locale
+    contesto_corpus = trova_contesto_rilevante(user_message)
+    contesto_locale = contesto_corpus[0] if contesto_corpus else ""
+
+    # 2️⃣ Se il contesto locale è troppo generico, fai scraping
+    if not contesto_locale or len(contesto_locale) < 100:
+        contesto_locale = cerca_online_tecnaria(user_message)
+
+    # 3️⃣ Unisci prompt e contesto
+    prompt = BASE_SYSTEM_PROMPT + "\n\nContesto rilevante:\n" + contesto_locale
 
     try:
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": BASE_SYSTEM_PROMPT},
-                {
-                    "role": "user",
-                    "content": f"Domanda: {user_message}\n\nInformazioni raccolte dal sito ufficiale Tecnaria:\n{contesto_scraping}"
-                }
+                {"role": "system", "content": prompt},
+                {"role": "user", "content": user_message}
             ]
         )
         risposta = response.choices[0].message.content.strip()
     except Exception as e:
-        risposta = f"⚠️ Errore nella risposta: {e}\n\nContesto trovato:\n{contesto_scraping}"
+        risposta = f"⚠️ Errore nella risposta: {e}\n\nContesto:\n{contesto_locale}"
 
     return jsonify({"response": risposta})
 
