@@ -27,7 +27,7 @@ def ask():
 
     # 1️⃣ Cerca nel corpus locale
     contesto_corpus = trova_contesto_rilevante(user_message)
-    contesto_locale = contesto_corpus[0] if contesto_corpus else ""
+    contesto_locale = contesto_corpus[0] if contesto_corpus else f""
 
     # 2️⃣ Fallback a scraping se il contesto è troppo povero
     if not contesto_locale or len(contesto_locale) < 100:
