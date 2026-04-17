@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: tecnariabot
-    env: python
-    buildCommand: ""
-    startCommand: "python main.py"
-    envVars:
-      - key: OPENAI_API_KEY
-        sync: false
