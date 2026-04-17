@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEKNARIA V3 - Hermeneutica</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 HERMENEUTICA</h1>
+            <p>La lettura intelligente dei bilanci</p>
+        </header>
 
+        <main id="app">
+            <!-- Login Screen -->
+            <section id="login-screen" class="screen active">
+                <div class="login-box">
+                    <h2>Accesso</h2>
+                    <input type="password" id="password" placeholder="Password" />
+                    <button onclick="login()">Accedi</button>
+                </div>
+            </section>
+
+            <!-- Dashboard -->
+            <section id="dashboard" class="screen">
+                <nav class="navbar">
+                    <h2>Dashboard</h2>
+                    <button onclick="logout()">Esci</button>
+                </nav>
+
+                <div class="content">
+                    <div class="panel">
+                        <h3>I Tuoi Cassetti (Clienti)</h3>
+                        <div id="cassetti-list" class="list"></div>
+                        <button onclick="showNewCassetto()">+ Nuovo Cassetto</button>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Upload Bilancio</h3>
+                        <select id="cassetto-select">
+                            <option value="">Seleziona cassetto</option>
+                        </select>
+                        <input type="number" id="anno" placeholder="Anno" min="2020" max="2025" />
+                        <input type="file" id="bilancio-file" accept=".pdf" />
+                        <button onclick="uploadBilancio()">Upload</button>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Bilanci Caricati</h3>
+                        <div id="bilanci-list" class="list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Risultati Analisi -->
+            <section id="analisi-screen" class="screen">
+                <nav class="navbar">
+                    <button onclick="backToDashboard()">← Indietro</button>
+                </nav>
+
+                <div class="content">
+                    <div class="panel">
+                        <h3>📊 HERMENEUTICA - Analisi</h3>
+                        <div id="analisi-narrativa" class="narrativa"></div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>📌 Capsule</h3>
+                        <div id="capsule-list" class="capsule"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>TEKNARIA V3 - Hermeneutica | La lettura intelligente dei bilanci</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
